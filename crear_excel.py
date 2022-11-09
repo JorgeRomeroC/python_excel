@@ -1,3 +1,4 @@
+import datetime
 import os.path
 import pandas
 from pandas import ExcelWriter
@@ -9,9 +10,10 @@ datos = pandas.DataFrame({
     "nombre": ["Juan", "Jorge", "Silvana", "Zoe", "Diego", "Jorgito"],
     "apellido": ["Romero", "Novoa", "Contreras", "Pérez", "Torres", "Martinez"]
 })
+fecha = str(datetime.datetime.now())
 datos = datos[['id', 'nombre', 'apellido']]
 
-write = ExcelWriter(ruta+"/archivo.xlsx")
+write = ExcelWriter(ruta+f"/{fecha}_archivo.xlsx")
 
 datos.to_excel(write, "Hoja 1", index=False)
 
